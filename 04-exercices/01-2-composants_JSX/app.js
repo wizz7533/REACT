@@ -29,13 +29,26 @@ function Banner() {
     );
 };
 
+function BannerImg(props) {
+    return (
+        <header>
+            <h2>{props.children}</h2>
+            <img src={props.imgSrc} width="300px" alt=""/>
+            <p>{props.message}</p>
+        </header>
+    );
+};
+
+let lienImg = './images/dog.jpg';
+
 const containerElt = React.createElement(
     "div",
     {},
     titleElt,
     imgElt,
     pElt,
-    <Banner />
+    <Banner />,
+    <BannerImg imgSrc={lienImg} message="Real Dog runs and flies">HAHA !!</BannerImg>
 );
 
 
