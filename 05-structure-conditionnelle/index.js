@@ -8,6 +8,14 @@ const prenoms = [
 
 const utilisateurs = ['Salut'];
 
+function WelcomePage(props) {
+    if (props.isLogged) {
+        return (<h1>Bienvenue sur ma page</h1>);
+    } else {
+        return (<h1>Vous devez être connecté pour voir cette page</h1>);
+    }
+}
+
 class App extends React.Component {
 
     createUserArrayElt() {
@@ -70,6 +78,8 @@ class App extends React.Component {
                 {
                         (utilisateurs.length>0) ? <p>Il y a des utilisateurs</p> : <p>Aucun utilisateur</p>
                 }
+                <h3>Composant</h3>
+                <WelcomePage isLogged={true}/>
             </React.Fragment>
         );
     }
@@ -78,4 +88,4 @@ class App extends React.Component {
 ReactDOM.render(
     <App />,
     document.getElementById('root')
-);
+)
