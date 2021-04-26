@@ -21,20 +21,48 @@ function ProductName(props) {
 class PersonName extends React.Component {
 
     constructor(props) {
+        // this.props = props
         super(props);
     }
 
     render() {
-        return <p>Personne: {this.props.nom}</p>
+        console.log(this.props);
+        return (
+            <p className={this.props.styleComponent}>
+                Personne: {this.props.nom}
+            </p>
+        )
     }
 }
 
+function Person(props) {
+    console.log(props);
+    return (
+        <p>
+            Personne: {props.children}
+        </p>
+    );
+
+}
+
+function App() {
+    return (
+        <div>
+            <Product />
+            <ProductName nom="Fleurs" />
+            <ProductName nom="Terre" />
+            <PersonName nom="Jerry" styleComponent="title" />
+            <Person>Beth</Person>
+            <Person>
+                <a href="#">
+                    <span>Salut</span>
+                </a>
+            </Person>
+        </div>
+    );
+}
+
 ReactDOM.render(
-    <div>
-        <Product />
-        <ProductName nom="Fleurs" />
-        <ProductName nom="Terre" />
-        <PersonName nom="Jerry" />
-    </div>,
+    <App />,
     document.getElementById('root')
 );
