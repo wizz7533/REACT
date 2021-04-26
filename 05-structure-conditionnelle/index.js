@@ -6,6 +6,8 @@ const prenoms = [
     "Beth"
 ];
 
+const utilisateurs = ['Salut'];
+
 class App extends React.Component {
 
     createUserArrayElt() {
@@ -25,6 +27,16 @@ class App extends React.Component {
             userJSXElements.push(jsxLi);
         }
         return userJSXElements;
+    }
+
+    printUsers() {
+        if (utilisateurs.length > 0) {
+            return (
+                <ul>{this.createUserArrayElt()}</ul>
+            );
+        } else {
+            return <p>La liste des utilisateurs est vide.</p>
+        }
     }
 
     render() {
@@ -52,7 +64,11 @@ class App extends React.Component {
                 </ul>
                 <h2>Afficher une liste seulement si elle n'est pas vide</h2>
                 {
-
+                    this.printUsers()
+                }
+                <h3>Condition Ternaire</h3>
+                {
+                        (utilisateurs.length>0) ? <p>Il y a des utilisateurs</p> : <p>Aucun utilisateur</p>
                 }
             </React.Fragment>
         );
