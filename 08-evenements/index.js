@@ -1,3 +1,41 @@
+class ThisReference extends React.Component {
+    constructor(props) {
+        super(props);
+        this.nom = "Doe";
+        this.afficherNomBinding = this.afficherNomBinding.bind(this);
+    }
+ 
+    afficherNom() {
+        console.log(this);
+    }
+
+    afficherNomFlechee = () => {
+        console.log(this.nom);
+    }
+
+    afficherNomBinding() {
+        console.log(this.nom);
+
+    }
+
+    render() {
+        return (
+            <div>
+                <p>Lorsque onClick va appeler la fonction afficherNom, le this ne sera pas le bon.
+                 Car afficherNom est appelé depuis l'intérieur la fonction onClick
+                </p>
+                <button onClick={this.afficherNom}>Perte de contexte</button>
+                <p>Lorsque onClick va appeler la fonction afficherNomFechee, le this sera le bon.
+                Car afficherNomFechee utilise une fonction fléchée sur la fonction onClick
+                </p>
+                <button onClick={this.afficherNomFlechee}>Garde le contexte</button>
+                <br/>
+                <button onClick={this.afficherNomBinding}>Garde le contexte</button>
+            </div>
+        );
+    }
+}
+
 class Person extends React.Component {
     constructor(props) {
         super(props);
@@ -40,6 +78,7 @@ class App extends React.Component {
         return (
             <React.Fragment>
                 <Person />
+                <ThisReference/>
             </React.Fragment>
         );
     }
