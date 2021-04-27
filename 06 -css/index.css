@@ -1,0 +1,16 @@
+.btn {
+    border: none;
+    border-radius: 5px;
+    font-size: bold;
+    padding: 10px 25px;
+}
+
+.green {
+    color: white;
+    background-color: green;
+}
+
+.red {
+    color: white;
+    background-color: red;
+}
