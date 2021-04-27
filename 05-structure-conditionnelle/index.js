@@ -47,6 +47,15 @@ class App extends React.Component {
         }
     }
 
+    createUsers(prenom, index) {
+        const element = (
+            <li key={index}>
+                <a href="#">{prenom}</a>
+            </li>
+        )
+        return element;
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -79,7 +88,14 @@ class App extends React.Component {
                         (utilisateurs.length>0) ? <p>Il y a des utilisateurs</p> : <p>Aucun utilisateur</p>
                 }
                 <h3>Composant</h3>
-                <WelcomePage isLogged={true}/>
+                <WelcomePage isLogged={true} />
+
+                <h3>Map</h3>
+                <ul>
+                    {
+                        prenoms.map(this.createUsers)
+                    }
+                </ul>
             </React.Fragment>
         );
     }
