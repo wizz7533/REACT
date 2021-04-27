@@ -43,9 +43,8 @@ class Produits extends React.Component {
     constructor(props) {
         super(props);
     }
-    createProductTableRow(product, index) {
-        const element = (
-            
+    createProductTableRow(produits, index) {
+        const element = (  
             <tr key={produits.id}>
                 <td>{produits.title}</td>
                 <td>{produits.description}</td>
@@ -53,14 +52,13 @@ class Produits extends React.Component {
             </tr>
         );
         return element;
-        
     }
     render() {
         console.log(this.props);
-
+        return (
             <React.Fragment>
                 {
-                {produits.length < 1} ?
+                (produits.length < 1) ?
                 <p>La liste est vide</p> :
                 <table>
                     <thead>
@@ -72,12 +70,13 @@ class Produits extends React.Component {
                     </thead>
                     <tbody>
                         {
-                            produits.map(tis.createProductTableRow)
+                            produits.map(this.createProductTableRow)
                         }
                     </tbody>
                 </table>
                 }
             </React.Fragment>
+        );
             }
 }
 
@@ -85,10 +84,10 @@ class App extends React.Component {
     render() {
         return (
             <React.Fragment>
-                {/* <h2>Liste des aliments</h2>
+                <h2>Liste des aliments</h2>
                 <ul>
                     <Aliments/>
-                </ul> */}
+                </ul>
                 <Produits/>
            </React.Fragment> 
         );
