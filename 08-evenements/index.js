@@ -20,6 +20,7 @@ class Person extends React.Component {
         console.log(nombre);
     }
 
+
     render() {
         return (
             <React.Fragment>
