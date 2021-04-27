@@ -19,6 +19,7 @@ class Person extends React.Component {
         return (
             <React.Fragment>
                 <p>Prenom</p>
+                {/* Attention, on ne met pas les parentheses car on ne souhaite pas exécuter la fonction mais la transmettre */}
                 <button onClick={this.direBonjour}>Clique ici</button>
                 <input type="text" placeholder="Saisir un Nom" onChange={this.afficherSaisie}></input>
             </React.Fragment>
