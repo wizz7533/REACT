@@ -249,7 +249,7 @@ function Utilisateurs(props) {
             <React.Fragment>
                 {
                     (props.users.length < 1) ? <p>Il n'y a aucun utilisateur</p> :
-                        props.users.map(u => <Utilisateurs key={u.id} username={u.username} email={u.email} telephone={u.phone}/>)
+                        props.users.map(u => <Utilisateur key={u.id} username={u.username} email={u.email} telephone={u.phone}/>)
                 }
         </React.Fragment>
 
