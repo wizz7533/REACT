@@ -47,7 +47,7 @@ class Panier extends React.Component {
                             <tr key={products.id}>
                                 <td>{products.id}</td>
                                 <td>{products.title}</td>
-                                <td>{products.quantity}</td>
+                                <td><button class="fas fa-angle-up"></button>{products.quantity}<button class="fas fa-angle-down"></button></td>
                                 <td>{products.price * products.quantity}</td>
                             </tr>                       
                         )
