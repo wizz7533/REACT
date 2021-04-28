@@ -10,33 +10,54 @@ class Panier extends React.Component {
             ]
         };
     }
-    createProductTableRow(produit, index) {
+
+    incrementer(id) {
+        const produits = [...this.state.produits];
+        const index = produits.findIndex(produit => produit.id === id);
+        produits[index].quantity++;
+        this.setState({
+            produits
+        });
+    }
+
+    decrementer(id) {
+        const produits = [...this.state.produits];
+        const index = produits.findIndex(produit => produit.id === id);
+        if (produits[index].quantity < 2) {
+            return;
+        }
+        produits[index].quantity--;
+        this.setState({
+            produits
+        });
+    }
+
+    suppression(id) {
+        const produits = [...this.state.produits];
+        const index = produits.findIndex(produit => produit.id === id);
+        produits.splice(index, 1);
+        this.setState({
+            produits
+        });
+    }
+
+    createProductTableRow = (produit, index) => {
         const element = (
             <tr key={produit.id}>
                 <td>{index + 1}</td>
                 <td>{produit.title}</td>
                 <td>
-                    <button>+</button>
+                    <button onClick={() => this.incrementer(produit.id)}>+</button>
                     {produit.quantity}
-                    <button>-</button>
+                    <button onClick={() => this.decrementer(produit.id)}>-</button>
                 </td>
                 <td>{produit.price}</td>
                 <td>
-                    <button>Supprimer le produit</button>
+                    <button onClick={() => this.suppression(produit.id)}>Supprimer le produit</button>
                 </td>
             </tr>
         );
         return element;
-    }
-
-    incrementer() {
-    }
-
-    decrementer() {
-        if (produit.quantity < 0) {
-            return;
-        }
-
     }
 
     render() {

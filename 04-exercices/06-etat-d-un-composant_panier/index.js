@@ -26,16 +26,40 @@ class Panier extends React.Component {
 
     }
 
-    incrementer = (id) => {
+    incrementer(id) {
         console.log(this.state.products);
-        function findId() { this.state.products.find(products => products.id == id) };
-        
-        console.log(id);
-        //this.state.quantity <1 ? this.state.quantity = this.state.quantity : this.state.quantity += this.state.quantity
+        const produits = [ ...this.state.products ];
+        const index = produits.findIndex(produit => produit.id === id);
+        // produits[index].quantity++;
+        produits[index].quantity <1 ? produits[index].quantity = produits[index].quantity : produits[index].quantity ++
+        this.setState({
+            produits
+        });
     }
 
-    decrementer = () => {
-        //this.state.quantity < 1 ? this.state.quantity = this.state.quantity : this.state.quantity -= this.state.quantity
+    decrementer(id) {
+        console.log(this.state.products);
+        const produits = [...this.state.products];
+        const index = produits.findIndex(produit => produit.id === id);
+        // produits[index].quantity++;
+        produits[index].quantity < 2 ? produits[index].quantity = produits[index].quantity : produits[index].quantity --
+        this.setState({
+            produits
+        });
+    }
+
+    supprimer(id) {
+        console.log(this.state.products);
+        const produits = [...this.state.products];
+        const index = produits.findIndex(produit => produit.id === id);
+        console.log(index);
+
+        // produits[index].quantity++;
+        produits.splice(index, 1);
+        console.log(produits);
+        this.setState({
+            products: produits
+        })
     }
 
     render() {
@@ -58,9 +82,9 @@ class Panier extends React.Component {
                             <tr key={products.id}>
                                 <td>{products.id}</td>
                                 <td>{products.title}</td>
-                                <td><button className="fas fa-angle-up" onClick={this.incrementer}></button><span>{products.quantity}</span><button className="fas fa-angle-down" onClick={this.decrementer}></button></td>
+                                <td><button className="fas fa-angle-up" onClick={() => this.incrementer(products.id)}></button><span>{products.quantity}</span><button className="fas fa-angle-down" onClick={() => this.decrementer(products.id)}></button></td>
                                 <td>{products.price * products.quantity}</td>
-                                <td><button className="fas fa-shopping-basket"></button></td>
+                                <td><button className="fas fa-shopping-basket" onClick={() => this.supprimer(products.id)}></button></td>
                             </tr>                       
                         )
                         }
