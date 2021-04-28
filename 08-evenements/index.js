@@ -25,11 +25,15 @@ class ThisReference extends React.Component {
                  Car afficherNom est appelé depuis l'intérieur la fonction onClick
                 </p>
                 <button onClick={this.afficherNom}>Perte de contexte</button>
+                <br/>
                 <p>Lorsque onClick va appeler la fonction afficherNomFechee, le this sera le bon.
                 Car afficherNomFechee utilise une fonction fléchée sur la fonction onClick
                 </p>
                 <button onClick={this.afficherNomFlechee}>Garde le contexte</button>
-                <br/>
+                <br />
+                <p>Lorsque onClick va appeler la fonction afficherNomBinding, le this sera le bon.
+                Car afficherNomBinding utilise une fonction sur la fonction onClick mais avec le bon contexte.
+                </p>
                 <button onClick={this.afficherNomBinding}>Garde le contexte</button>
             </div>
         );
@@ -58,6 +62,14 @@ class Person extends React.Component {
         console.log(nombre);
     }
 
+    changerPrenom = () => {
+        console.log(this.state.prenom);
+        /** Il ne faut jamais modifier le state directement */
+        // this.state.prenom = "John";
+        this.setState({
+            prenom: 'John'
+        });
+    }
 
     render() {
         return (
@@ -66,7 +78,8 @@ class Person extends React.Component {
                 {/* Attention, on ne met pas les parentheses car on ne souhaite pas exécuter la fonction mais la transmettre */}
                 <button onClick={this.direBonjour}>Clique ici</button>
                 <input type="text" placeholder="Saisir un Nom" onChange={this.afficherSaisie}></input>
-                <button onClick={(evenement) => this.afficherEventEtNombre(evenement, 50) }>Afficher Event</button>
+                <button onClick={(evenement) => this.afficherEventEtNombre(evenement, 50)}>Afficher Event</button>
+                <button onClick={ this.changerPrenom}>Changer le prenom</button>
             </React.Fragment>
         );
     }
