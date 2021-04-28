@@ -29,12 +29,12 @@ class ThisReference extends React.Component {
                 <p>Lorsque onClick va appeler la fonction afficherNomFechee, le this sera le bon.
                 Car afficherNomFechee utilise une fonction fléchée sur la fonction onClick
                 </p>
-                <button onClick={this.afficherNomFlechee}>Garde le contexte</button>
+                <button onClick={this.afficherNomFlechee}>Garde le contexte (méthode 1)</button>
                 <br />
                 <p>Lorsque onClick va appeler la fonction afficherNomBinding, le this sera le bon.
                 Car afficherNomBinding utilise une fonction sur la fonction onClick mais avec le bon contexte.
                 </p>
-                <button onClick={this.afficherNomBinding}>Garde le contexte</button>
+                <button onClick={this.afficherNomBinding}>Garde le contexte (méthode 2)</button>
             </div>
         );
     }
@@ -45,6 +45,10 @@ class Person extends React.Component {
         super(props);
         this.state = {
             prenom: "",
+            utilisateur: {
+                id: 0,
+                nom: ''
+            }
         }
     }
 
@@ -71,6 +75,30 @@ class Person extends React.Component {
         });
     }
 
+    changerNomUtilisateur = () => {
+        // on récupère l'utilisateur
+        const newUtilisateur = { ...this.utilisateur };
+        // on modifie les propriétés qu'on veut
+        newUtilisateur.id = 5;
+        newUtilisateur.prenom = 'Maude';
+        // on modifie le state
+        this.setState({ utilisateur: newUtilisateur })
+        
+        /** Il ne faut pas faire, car setState peut êre asynchrone et attendre un peu
+         * avant de mettre à jour le state pour des question de performance
+         */
+        //this.setState({ utilisateur: this.state.utilisateur })
+
+        this.setState((oldState) => {
+            utilisateur: oldState.utilisateur
+        });
+
+        this.setState({
+            utilisateur: newUtilisateur,
+            prenom: newUtilisateur.nom
+        });
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -79,7 +107,9 @@ class Person extends React.Component {
                 <button onClick={this.direBonjour}>Clique ici</button>
                 <input type="text" placeholder="Saisir un Nom" onChange={this.afficherSaisie}></input>
                 <button onClick={(evenement) => this.afficherEventEtNombre(evenement, 50)}>Afficher Event</button>
-                <button onClick={ this.changerPrenom}>Changer le prenom</button>
+                <p>Prénom: {this.state.prenom}</p>
+                <button onClick={this.changerPrenom}>Changer le prenom</button>
+                <button onClick={this.changerNomUtilisateur}>Changer l'utilisateur'</button>
             </React.Fragment>
         );
     }
