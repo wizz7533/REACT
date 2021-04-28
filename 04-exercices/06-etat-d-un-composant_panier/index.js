@@ -26,7 +26,17 @@ class Panier extends React.Component {
 
     }
 
+    incrementer = (id) => {
+        console.log(this.state.products);
+        function findId() { this.state.products.find(products => products.id == id) };
+        
+        console.log(id);
+        //this.state.quantity <1 ? this.state.quantity = this.state.quantity : this.state.quantity += this.state.quantity
+    }
 
+    decrementer = () => {
+        //this.state.quantity < 1 ? this.state.quantity = this.state.quantity : this.state.quantity -= this.state.quantity
+    }
 
     render() {
         return (
@@ -48,7 +58,7 @@ class Panier extends React.Component {
                             <tr key={products.id}>
                                 <td>{products.id}</td>
                                 <td>{products.title}</td>
-                                <td><button className="fas fa-angle-up"></button><span>{products.quantity}</span><button className="fas fa-angle-down"></button></td>
+                                <td><button className="fas fa-angle-up" onClick={this.incrementer}></button><span>{products.quantity}</span><button className="fas fa-angle-down" onClick={this.decrementer}></button></td>
                                 <td>{products.price * products.quantity}</td>
                                 <td><button className="fas fa-shopping-basket"></button></td>
                             </tr>                       
