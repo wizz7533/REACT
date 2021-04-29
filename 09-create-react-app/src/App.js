@@ -7,9 +7,9 @@ import React from 'react';
 function App() {
   return (
     <>
-      <Title />
+      {/* <Title />
       <LifeCycle />
-      <Card />
+      <Card /> */}
       <Formulaire />
     </>
   );

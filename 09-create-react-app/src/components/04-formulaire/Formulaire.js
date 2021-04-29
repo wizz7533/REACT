@@ -7,24 +7,55 @@ class Formulaire extends React.Component {
             nom: '',
             prenom: '',
             email: '',
-            age: '',
+            age: 0,
             ville: '',
-            cgu: false
+            cgu: true,
+            formErrors: {
+                nom: '',
+                prenom: '',
+                email: '',
+                age: '',
+                ville: '',
+            }
         };
+        this.formErrors = {
+            nom: ['', ''],
+        }
     }
 
-    // onChangeNomHandler = (event) => {
-    //     this.setState({ nom: event.target.value })
-    // }
+    onChangeNomHandler = (event) => {
+        const nom = event.target.value;
+        const errorsCopy = { ...this.state.formErrors };
+        let messageError = '';
+        if (nom.length < 2) {
+            messageError = 'Le nom doit faire au moins 2 caracteres'
+        }
+        this.setState({
+            formErrors: {
+                ...errorsCopy,
+                nom: messageError
+            }
+        })
+        this.setState({ nom: event.target.value })
+    }
 
-    // onChangePrenomHandler = (event) => {
-    //     this.setState({ prenom: event.target.value })
-    // }
+    onChangePrenomHandler = (event) => {
+        this.setState({ prenom: event.target.value })
+    }
 
+    setErrorMsg(nomDuChamp) {
+        switch (nomDuChamp) {
+            case 'nom':
+                break;
+            case 'email':
+                break;
+            default:
+                break;
+        }
+    }
     onChangeHandler = (event) => {
+        console.log(event);
         const nomDuChamps = event.target.name;
-
-        // const valeur = event.target.value;
         // Attention avec les checkbox, il faudra verifier le type
         const valeur = (event.target.type === "checkbox") ?
             event.target.checked :
@@ -37,37 +68,43 @@ class Formulaire extends React.Component {
                 }
                 console.log(obj);
                 console.log(obj.email);
+        */
+        this.setErrorMsg(nomDuChamps);
 
-        */  
-        this.setState({ [nomDuChamps]: valeur })
+        this.setState({
+            [nomDuChamps]: valeur
+        })
+    }
+
+    onSubmitHandler = (event) => {
+        console.log("Event: ", event);
+        event.preventDefault();
     }
 
     render() {
         return (
             <div className="container">
                 <h1>Les formulaires</h1>
-                <p>Nom {this.state.nom}</p>
-                <p>Prenom {this.state.prenom}</p>
-                <p>Age {this.state.age} ans</p>
-                <br/>
-                <form className="w-50 m-auto">
+                <p>Prenom: {this.state.nom}</p>
+                <form className="w-50 m-auto" onSubmit={this.onSubmitHandler}>
                     <div className="form-group">
                         <label htmlFor="nom">Nom</label>
                         <input
                             className="form-control"
                             type="text"
-                            name= "nom"
+                            id="nom"
                             value={this.state.nom}
-                            onChange={this.onChangeHandler} />
+                            onChange={this.onChangeNomHandler} />
+                        <p>{this.state.formErrors.nom}</p>
                     </div>
                     <div>
                         <label htmlFor="prenom">Prénom</label>
                         <input
                             className="form-control"
                             type="text"
-                            name= "prenom"
+                            id="prenom"
                             value={this.state.prenom}
-                            onChange={this.onChangeHandler} />
+                            onChange={this.onChangePrenomHandler} />
 
                     </div>
                     <div>
@@ -75,13 +112,14 @@ class Formulaire extends React.Component {
                         <input
                             className="form-control"
                             type="text"
-                            name= "email"
+                            name="email"
+                            id="email"
                             value={this.state.email}
                             onChange={this.onChangeHandler} />
 
                     </div>
                     <div>
-                        <label htmlFor="age">Age</label>
+                        <label>Age</label>
                         <input
                             className="form-control"
                             type="text"
@@ -90,32 +128,34 @@ class Formulaire extends React.Component {
                             onChange={this.onChangeHandler} />
 
                     </div>
-                    <div>
+                    <div className="form-group">
                         <label htmlFor="ville">Ville de naissance</label>
                         <select
                             onChange={this.onChangeHandler}
-                            className="form-select"
                             name="ville"
                             id="ville"
-                        >
+                            className="form-select">
                             <option value="paris">Paris</option>
                             <option value="bordeaux">Bordeaux</option>
-                            <option value="pau">Pau</option>
+                            <option value="balansun">Balansun</option>
                         </select>
                     </div>
                     <div className="form-group">
-                        <input type="checkbox" id="cgu" name="cgu" value={this.state.cgu} onChange={this.onChangeHandler} />
+                        <input type="checkbox" id="cgu" name="cgu" checked={this.state.cgu} value={this.state.cgu} onChange={this.onChangeHandler} />
                         <label htmlFor="cgu">J'accepte les CGU</label>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="cgu">Champs contrôlé</label>
-                        <br/>
-                        {/**Dès que l'on définir l'attribut value,
-                         * le champs devient contrôlé par React 
-                         * et on ne pourra plus modifier la valeurs sans onChange=""
+                        <label htmlFor="cgu">champs contrôlé</label>
+                        {/* 
+                            Des que l'on definit l'attribut value
+                            le champ devient controlé par React et on ne peut 
+                            pourra plus le modifier sans onChange=""
                          */}
                         <input type="text" value="salut" />
-                        <input type="text" defaultValue="John" />
+                        <input type="text" defaultValue="Wizz" placeholder="test" />
+                    </div>
+                    <div className="form-group">
+                        <input type="submit" value="Inscription" />
                     </div>
                 </form>
             </div>
