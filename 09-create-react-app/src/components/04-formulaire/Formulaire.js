@@ -107,6 +107,16 @@ class Formulaire extends React.Component {
                         <input type="checkbox" id="cgu" name="cgu" value={this.state.cgu} onChange={this.onChangeHandler} />
                         <label htmlFor="cgu">J'accepte les CGU</label>
                     </div>
+                    <div className="form-group">
+                        <label htmlFor="cgu">Champs contrôlé</label>
+                        <br/>
+                        {/**Dès que l'on définir l'attribut value,
+                         * le champs devient contrôlé par React 
+                         * et on ne pourra plus modifier la valeurs sans onChange=""
+                         */}
+                        <input type="text" value="salut" />
+                        <input type="text" defaultValue="John" />
+                    </div>
                 </form>
             </div>
         );
