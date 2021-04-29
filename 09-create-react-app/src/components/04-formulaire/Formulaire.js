@@ -34,7 +34,7 @@ class Formulaire extends React.Component {
                 <br/>
                 <form className="w-50 m-auto">
                     <div className="form-group">
-                        <label>Nom</label>
+                        <label htmlFor="nom">Nom</label>
                         <input
                             className="form-control"
                             type="text"
@@ -43,7 +43,7 @@ class Formulaire extends React.Component {
                             onChange={this.onChangeHandler} />
                     </div>
                     <div>
-                        <label>Prénom</label>
+                        <label htmlFor="prenom">Prénom</label>
                         <input
                             className="form-control"
                             type="text"
@@ -53,7 +53,7 @@ class Formulaire extends React.Component {
 
                     </div>
                     <div>
-                        <label>Email</label>
+                        <label htmlFor="email">Email</label>
                         <input
                             className="form-control"
                             type="text"
@@ -63,7 +63,7 @@ class Formulaire extends React.Component {
 
                     </div>
                     <div>
-                        <label>Age</label>
+                        <label htmlFor="age">Age</label>
                         <input
                             className="form-control"
                             type="text"
