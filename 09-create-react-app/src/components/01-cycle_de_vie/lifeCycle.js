@@ -15,13 +15,23 @@ class LifeCycle extends Component {
         }
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        console.log("4.Composant Update");
+        console.log("Previous Props: ", prevProps);
+        console.log("Previous State: ", prevState);
+    }
     
     componentDidMount() {
         console.log("3.Composant Monté");
-        setInterval(() => {
+        this.timer = setInterval(() => {
             const NewDate = new Date();
             this.setState({ date: NewDate })
-        }, 1000);        
+        }, 1000);
+        console.log(this.timer);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timer);
     }
 
     render() {
