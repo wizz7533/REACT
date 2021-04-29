@@ -4,26 +4,77 @@ class Formulaire extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            nom: ''
+            nom: '',
+            prenom: '',
+            email: ''
         };
     }
+
+    // onChangeNomHandler = (event) => {
+    //     this.setState({ nom: event.target.value })
+    // }
+
+    // onChangePrenomHandler = (event) => {
+    //     this.setState({ prenom: event.target.value })
+    // }
+
     onChangeHandler = (event) => {
-        this.setState({nom: event.target.value})
+        const nomDuChamps = event.target.name;
+        const valeur = event.target.value;
+        this.setState({ [nomDuChamps]: valeur })
     }
+
     render() {
         return (
-            <>
-                <h1>Les Formulaires</h1>
-                <p>Prenom: {this.state.nom}</p>
-                <form>
+            <div className="container">
+                <h1>Les formulaires</h1>
+                <p>Nom {this.state.nom}</p>
+                <p>Prenom {this.state.prenom}</p>
+                <p>Age {this.state.age} ans</p>
+                <br/>
+                <form className="w-50 m-auto">
                     <div className="form-group">
                         <label>Nom</label>
-                        <input className="form-control" type="text" value={this.state.nom} onChange= {this.onChangeHandler} />
+                        <input
+                            className="form-control"
+                            type="text"
+                            name= "nom"
+                            value={this.state.nom}
+                            onChange={this.onChangeHandler} />
+                    </div>
+                    <div>
+                        <label>Prénom</label>
+                        <input
+                            className="form-control"
+                            type="text"
+                            name= "prenom"
+                            value={this.state.prenom}
+                            onChange={this.onChangeHandler} />
+
+                    </div>
+                    <div>
+                        <label>Email</label>
+                        <input
+                            className="form-control"
+                            type="text"
+                            name= "email"
+                            value={this.state.email}
+                            onChange={this.onChangeHandler} />
+
+                    </div>
+                    <div>
+                        <label>Age</label>
+                        <input
+                            className="form-control"
+                            type="text"
+                            name="age"
+                            value={this.state.age}
+                            onChange={this.onChangeHandler} />
+
                     </div>
                 </form>
-                </>
+            </div>
         );
     }
 }
-                
 export default Formulaire;
