@@ -1,0 +1,21 @@
+.navigation {
+    padding: 10px;
+}
+
+.navigation ul {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.navigation a {
+    padding: 5px, 20px;
+    border-radius: 5px;
+}
+
+.navigation a:hover {
+    color:white;
+    background-color: teal;
+    text-decoration: none;
+}

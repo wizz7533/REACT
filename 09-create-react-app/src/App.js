@@ -7,6 +7,7 @@ import React from 'react';
 import { BrowserRouter} from 'react-router-dom';
 import Routes from './router/routes';
 import Navigation from './router/Nav';
+import './App.css';
 
 function App() {
   return (

@@ -42,7 +42,7 @@ class LifeCycle extends Component {
                     Nous sommes le &nbsp;
                     <FormatDate date={this.state.date} />
                 </p>
-                <p>Temps de connection : {this.state.date.toLocaleTimeString()}</p>
+                <p>Heure Locale : {this.state.date.toLocaleTimeString()}</p>
             </>
         );
     }

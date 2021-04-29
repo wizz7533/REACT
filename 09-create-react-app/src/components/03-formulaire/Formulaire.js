@@ -85,7 +85,11 @@ class Formulaire extends React.Component {
         return (
             <div className="container">
                 <h1>Les formulaires</h1>
-                <p>Prenom: {this.state.nom}</p>
+                <p>Nom: {this.state.nom}</p>
+                <p>Prénom: {this.state.prenom}</p>
+                <p>Age: {this.state.age}</p>
+                <p>email: {this.state.email}</p>
+                <p>Ville: {this.state.ville}</p>
                 <form className="w-50 m-auto" onSubmit={this.onSubmitHandler}>
                     <div className="form-group">
                         <label htmlFor="nom">Nom</label>
