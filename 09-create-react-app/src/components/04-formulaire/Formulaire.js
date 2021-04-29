@@ -6,7 +6,10 @@ class Formulaire extends React.Component {
         this.state = {
             nom: '',
             prenom: '',
-            email: ''
+            email: '',
+            age: '',
+            ville: '',
+            cgu: false
         };
     }
 
@@ -20,7 +23,22 @@ class Formulaire extends React.Component {
 
     onChangeHandler = (event) => {
         const nomDuChamps = event.target.name;
-        const valeur = event.target.value;
+
+        // const valeur = event.target.value;
+        // Attention avec les checkbox, il faudra verifier le type
+        const valeur = (event.target.type === "checkbox") ?
+            event.target.checked :
+            event.target.value;
+        /**
+         * On peut utiliser la valeur contenu dans une variable comme nom de propriété
+         * dans un objet
+                const obj = {
+                    [nomDuChamp]: 'test'
+                }
+                console.log(obj);
+                console.log(obj.email);
+
+        */  
         this.setState({ [nomDuChamps]: valeur })
     }
 
@@ -71,6 +89,23 @@ class Formulaire extends React.Component {
                             value={this.state.age}
                             onChange={this.onChangeHandler} />
 
+                    </div>
+                    <div>
+                        <label htmlFor="ville">Ville de naissance</label>
+                        <select
+                            onChange={this.onChangeHandler}
+                            className="form-select"
+                            name="ville"
+                            id="ville"
+                        >
+                            <option value="paris">Paris</option>
+                            <option value="bordeaux">Bordeaux</option>
+                            <option value="pau">Pau</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <input type="checkbox" id="cgu" name="cgu" value={this.state.cgu} onChange={this.onChangeHandler} />
+                        <label htmlFor="cgu">J'accepte les CGU</label>
                     </div>
                 </form>
             </div>
