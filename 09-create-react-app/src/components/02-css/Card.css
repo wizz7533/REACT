@@ -1,0 +1,5 @@
+/* Attention, CSS global, impacte l'ensemble de l'application */
+
+h2 {
+    color: red;
+}
