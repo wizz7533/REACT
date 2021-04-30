@@ -26,7 +26,8 @@ class Produits extends React.Component {
                     "description": "great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.",
                 }
 
-            ]
+            ],
+            idProduitEdit: 0
         }
     }
 
@@ -42,6 +43,11 @@ class Produits extends React.Component {
         )
         return productJsx;
     }
+
+    setEditProduitId(id) {
+        console.log(id);
+    }
+
     render() {
         return (
             <div className='container'>

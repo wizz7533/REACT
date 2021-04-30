@@ -3,9 +3,9 @@ function Produit(props) {
     return (
         <tr>
             <td>{props.index + 1}</td>
-            <td contenteditable="true">{title}</td>
-            <td contenteditable="true">{description}</td>
-            <td contenteditable="true">{price}</td>
+            <td contentEditable="true">{title}</td>
+            <td contentEditable="true">{description}</td>
+            <td contentEditable="true">{price}</td>
             <td>
                 <button className="btn btn-dark">Modifier</button>
                 <button className="btn btn-danger">Supprimer</button>

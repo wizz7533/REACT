@@ -1,0 +1,13 @@
+/* 
+    Selectionne les balises td qui ont commme 
+    attribut contenteditable qui vaut true 
+*/
+td[contenteditable="true"] {
+    box-shadow: 0 0 5px rgb(32, 158, 231);
+}
+
+/* 
+    Selectionne les td qui sont en mode lecture et ecriture
+ */
+/* td:read-write {
+} */

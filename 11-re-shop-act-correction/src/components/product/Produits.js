@@ -26,22 +26,60 @@ class Produits extends React.Component {
                     "description": "great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.",
                 }
 
-            ]
+            ],
+            idProduitId: 0,
         }
     }
 
-    createProduct(product, index) {
+    setEditProductId(id) {
+        this.setState({ idProduitId: id })
+    }
+
+    editProductHandler = (id, title, description, price) => {
+        const produits = [...this.state.products];
+        const newProduit = { id, title, description, price }
+        let indexProduit = produits.findIndex(p => p.id === id);
+        produits[indexProduit] = newProduit;
+        this.setState({
+            idProduitId: 0,
+            products: produits
+        })
+    }
+
+
+    deleteProductHanlder = (id) => {
+        const products = [...this.state.products];
+        const index = products.findIndex(product => product.id === id);
+        products.splice(index, 1);
+        this.setState({
+            products
+        });
+    }
+
+    createProduct = (product, index) => {
+        // if (product.id === this.state.idProduitId) <Produit ..../>
+        // else <EditProduct/>
         const productJsx = (
             <Produit
                 key={product.id}
+                id={product.id}
                 title={product.title}
                 description={product.description}
                 price={product.price}
                 index={index}
+                editId={() => this.setEditProductId(product.id)}
+                editing={(product.id === this.state.idProduitId)}
+                editProduct={this.editProductHandler}
+                delete={this.deleteProductHanlder}
+            // editing={
+            //     (product.id === this.state.idProduitId) ? true : false
+            // }
             />
+
         )
         return productJsx;
     }
+
     render() {
         return (
             <div className='container'>
