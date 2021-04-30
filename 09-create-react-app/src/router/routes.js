@@ -19,6 +19,7 @@ function Routes(props) {
             <Route exact path="/etat" component={Etat} />
             <Route exact path="/param/:id" component={Params} />
             <Route exact path="/users" component={Utilisateurs} />
+            {/* <Route exact path="/users/detail/:id" component={(props) => { return <UtilisateursDetail {...props}} /> */}
         </React.Fragment>
     );
 }
