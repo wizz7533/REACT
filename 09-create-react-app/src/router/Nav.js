@@ -26,6 +26,9 @@ function Navigaion(props) {
                 <li>
                     <NavLink to="/users">Utilisateurs</NavLink>
                 </li>
+                <li>
+                    <NavLink to="/ce-chemin-nexiste-pas">Not Found</NavLink>
+                </li>
             </ul>
         </nav>
     );
