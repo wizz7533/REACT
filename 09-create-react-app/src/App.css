@@ -19,3 +19,9 @@
     background-color: teal;
     text-decoration: none;
 }
+
+.navigation a.active {
+    color:white;
+    background-color: teal;
+    text-decoration: none;
+}

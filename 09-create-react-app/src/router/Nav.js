@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-function Navigaion(props) {
+function Navigation(props) {
     return (
         <nav className="navigation">
             <ul>
@@ -29,8 +29,11 @@ function Navigaion(props) {
                 <li>
                     <NavLink to="/ce-chemin-nexiste-pas">Not Found</NavLink>
                 </li>
+                <li>
+                    <NavLink to="/back">Retour</NavLink>
+                </li>
             </ul>
         </nav>
     );
 }
-export default Navigaion;
+export default Navigation;
