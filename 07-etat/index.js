@@ -6,7 +6,7 @@ class Aliments extends React.Component {
                 'Peche',
                 'Pomme'
             ],
-            prenom: "",
+            prenom:"",
         }
     }
 
@@ -25,21 +25,17 @@ class Aliments extends React.Component {
                             <li>{this.state.aliments[0]}</li>
                         </ul>
                 }
-                <p>Prenom: {this.getPrenom()}</p>
-
+                <p>Prenom: {this.getPrenom}</p>
             </React.Fragment>
         );
     }
 }
 
-
 class App extends React.Component {
     render() {
-        return (
-            <React.Fragment>
-                <Aliments />
-            </React.Fragment>
-        );
+        <React.Fragment>
+            <Aliments/>
+        </React.Fragment>
     }
 }
 
